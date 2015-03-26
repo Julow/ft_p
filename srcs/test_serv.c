@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 14:39:30 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/26 15:25:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/26 17:05:18 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void			accept_client(int sock)
 	unsigned int		cin_len;
 
 	printf("LOLING WHILE NOBODY\n");
-	cs = accept(sock, (struct sockaddr*)&cin, &cin_len);
+	// cs = accept(sock, (struct sockaddr*)&cin, &cin_len);
+	cs = accept(sock, NULL, 0);
 	printf("SOMEONE FUCKING HERE\n");
 	read_socket(cs);
 	(void)cin;
@@ -75,7 +76,8 @@ int				main(int argc, char **argv)
 		return (printf("LOL FUCK DAT ARGV\n"), 1);
 	if ((sock = create_server(atoi(argv[1]))) < 0)
 		return (printf("NO CHAUSSETTE\n"), 1);
-	accept_client(sock);
+	while (1)
+		accept_client(sock);
 	close(sock);
 	return (0);
 }
