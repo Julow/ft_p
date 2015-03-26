@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 14:39:30 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/26 14:58:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/26 15:25:14 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void			accept_client(int sock)
 
 int				main(int argc, char **argv)
 {
-	int				port;
 	int				sock;
 
 	if (argc < 2)
