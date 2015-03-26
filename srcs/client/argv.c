@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   argv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/26 15:39:36 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/26 19:16:30 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/26 19:12:14 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/26 19:12:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "client.h"
 
-# include <libft.h>
-
-# define MAX_CLIENTS	32
-
-typedef struct	s_server
+t_bool			parse_argv(t_client *client, int argc, char **argv)
 {
-	int				socket;
-	int				port;
-	int				client;
-}				t_server;
-
-int				ft_servcreate(int port);
-
-t_bool			parse_argv(t_server *serv, int argc, char **argv);
-
-#endif
+	(void)client;
+	(void)argc;
+	(void)argv;
+	return (true);
+}
