@@ -6,12 +6,12 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:42:20 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/26 18:56:33 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/27 19:55:08 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-#include "msg.h"
+#include "server_msg.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/socket.h>
@@ -22,7 +22,11 @@ static void		handle_client(t_server *serv)
 	char			buff[512];
 
 	while ((len = read(serv->client, buff, 512)) > 0)
+	{
 		ft_printf("Client say: %.*s", len, buff);
+		write(serv->client, "0\nLOLOLOLOLOL\n\xFF", 20);
+		ft_putchar('\n');
+	}
 }
 
 static void		wait_clients(t_server *serv)
@@ -43,7 +47,6 @@ static void		wait_clients(t_server *serv)
 			ft_printf(INFO_CLOSED);
 			exit(0);
 		}
-		close(cs);
 	}
 }
 

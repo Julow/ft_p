@@ -6,12 +6,12 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 17:13:37 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/26 18:09:12 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/27 16:09:40 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-#include "msg.h"
+#include "server_msg.h"
 
 t_bool			parse_argv(t_server *serv, int argc, char **argv)
 {

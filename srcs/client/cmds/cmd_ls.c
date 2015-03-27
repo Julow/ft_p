@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sisip.c                                         :+:      :+:    :+:   */
+/*   cmd_ls.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/26 19:26:04 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/26 19:56:07 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/27 19:20:14 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/27 19:52:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-t_bool			ft_sisip(const char *str)
+void			cmd_ls(t_client *client, char **argv)
 {
 	int				i;
 
+	ft_writestr(SOUT(client), "LS");
 	i = 0;
-	while (i < 3)
+	while (argv[++i] != NULL)
 	{
-		if (!ft_isdigit(*(str++)))
-			return (false);
-		while (ft_isdigit(*str))
-			str++;
-		i++;
-		if (i < 3 && *(str++) != '.')
-			return (false);
+		ft_writechar(SOUT(client), ' ');
+		ft_writestr(SOUT(client), argv[i]);
 	}
-	if (*str != '\0')
-		return (false);
-	return (true);
+	ft_writechar(SOUT(client), EOF);
+	ft_flush(SOUT(client));
+	wait_response(client);
 }
