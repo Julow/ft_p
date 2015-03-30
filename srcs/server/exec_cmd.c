@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd.c                                              :+:      :+:    :+:   */
+/*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/27 19:08:11 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 13:50:30 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/30 19:01:52 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/30 19:38:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
-#include "client_msg.h"
+#include "server.h"
+#include "server_msg.h"
 #include <stdlib.h>
 
 const t_cmd		g_cmds[] = {
-	{"ls", &serv_cmd},
-	{"cd", &serv_cmd},
-	{"pwd", &serv_cmd},
-	{"mkdir", &serv_cmd},
-	{NULL, NULL}
+	{"ls", &system_cmd, "/bin/ls"},
+	{NULL, NULL, NULL}
 };
 
-void			exec_cmd(t_client *client, t_sub *line)
+int				exec_cmd(t_server *serv, const char *cmd)
 {
-	char			**split;
+	char			**args;
+	int				error;
 	int				i;
 
-	if ((split = ft_strsplit(line->str, ' ')) == NULL)
-		return ;
+	if ((args = ft_strsplit(cmd, ' ')) == NULL || *args == NULL)
+		return (ft_writestr(SOUT(serv), RESP_ERROR), -1);
 	i = -1;
 	while (g_cmds[++i].name != NULL)
 	{
-		if (ft_strcase(g_cmds[i].name, split[0]))
+		if (ft_strcase(g_cmds[i].name, args[0]))
 		{
-			ft_strupper(split[0]);
-			g_cmds[i].f(client, split);
+			error = g_cmds[i].f(serv, g_cmds + i, args);
 			break ;
 		}
 	}
 	if (g_cmds[i].name == NULL)
-		ft_fdprintf(2, ERR_BAD_CMD, split[0]);
+	{
+		error = -2;
+		ft_writestr(SOUT(serv), RESP_UNSUPTED);
+	}
 	i = -1;
-	while (split[++i] != NULL)
-		free(split[i]);
-	free(split);
+	while (args[++i] != NULL)
+		free(args[i]);
+	free(args);
+	return (error);
 }

@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_response.c                                     :+:      :+:    :+:   */
+/*   ft_buffclear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/27 19:28:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/27 19:52:07 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/30 16:04:53 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/30 18:51:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
-#include "client_msg.h"
+#include "server.h"
 
-void			wait_response(t_client *client)
+void			ft_buffclear(t_buff *buff)
 {
-	int				status;
-
-	if (!ft_parseint(SIN(client), &status))
-		return ;
-	if (status > 0)
-		PS(ERROR);
-	else
-		PS(SUCCESS);
-	if (BIS(SIN(client), EOF))
-		PC('\n');
-	else if (BIS(SIN(client), '\n'))
-		ft_parsewrite(SIN(client), FTOUT, EOF);
-	FL;
+	buff->i = 0;
+	buff->length = 0;
 }

@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/26 15:19:19 by jaguillo          #+#    #+#              #
-#    Updated: 2015/03/26 18:58:14 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/03/30 19:36:05 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,7 @@ _rebug:
 	@make -f client.Makefile _rebug
 	@make -f server.Makefile _rebug
 
-re:
-	@make -f client.Makefile re
-	@make -f server.Makefile re
+re: fclean all
 
 _re:
 	@make -f client.Makefile _re

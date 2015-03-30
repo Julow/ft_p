@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/27 16:12:11 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/30 19:43:16 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,18 @@
 # define INFO_NEW		INFO "New connexion" ENDL
 # define INFO_CLOSED	INFO "Connexion closed" ENDL
 
+# define INFO_REQUEST	REQUEST "%s" ENDL
+
+# define SUCCS_CMD		SUCCESS "'%s' executed." ENDL
+# define ERR_CMD		ERROR "'%s' failed. (Code %d)" ENDL
+
 # define ERR_NO_ARG		ERROR "Please specify an argument" ENDL
 # define ERR_BAD_PORT	ERROR "Not a valid port: %s" ENDL
 
 # define ERR_CANT_PORT	ERROR "Cannot listen port %d" ENDL
 # define ERR_NO_FORK	ERROR "Cannot connect client (Fork failed)" ENDL
+
+# define RESP_ERROR		"Unexpected error" ENDL
+# define RESP_UNSUPTED	"Unsupported command" ENDL
 
 #endif

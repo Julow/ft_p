@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/27 18:08:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/27 19:38:59 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/30 16:31:56 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,26 @@
 ** ft_p
 */
 
+typedef struct	s_socket
+{
+	int				fd;
+	t_buff			in;
+	t_out			out;
+}				t_socket;
+
+# define SIN(c)		(&((c)->sock.in))
+# define SOUT(c)	(&((c)->sock.out))
+
+# define BUFF_SIZE	512
+
 /*
 ** ========================================================================== **
 ** Protocol
 ** ---
 ** Command:
 **  c:			CMD <arg ...><EOF>
-**  s (ok):		0\n<data><EOF>
-**  s (ko):		1\n<error msg><EOF>
+**  s (ok):		<data><EOF>0<EOF>
+**  s (ko):		<data><EOF>1<EOF>
 ** -
 ** Command list:
 **  LS <args ...>
