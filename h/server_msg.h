@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 14:51:59 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 19:24:29 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@
 
 # define ERR_CANT_PORT	ERROR "Cannot listen port %d" ENDL
 # define ERR_NO_FORK	ERROR "Cannot connect client (Fork failed)" ENDL
-
-# define ERR_FILE_NO	"No such file or directory." ENDL
-# define ERR_FILE_RIGHT	"Permission denied." ENDL
-# define ERR_FILE_DIR	"Is a directory." ENDL
-# define ERR_FILE_LOOP	"Symbolic link loop detected." ENDL
-# define ERR_FILE_ERR	"Unexpected error." ENDL
 
 # define RESP_ERROR		"Unexpected error" ENDL
 # define RESP_UNSUPTED	"Unsupported command" ENDL

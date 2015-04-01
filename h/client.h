@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 15:43:22 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 19:45:43 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ t_bool			parse_argv(t_client *client, int argc, char **argv);
 void			ft_buffclear(t_buff *buff);
 t_bool			ft_parsedata(t_buff *buff, char *dst, int len);
 
-/*
-** cmd
-*/
+t_bool			retrieve_file(t_client *client, t_file *file);
+
 void			prompt_user(t_client *client);
 
 void			send_request(t_client *client, char **args);

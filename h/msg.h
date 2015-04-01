@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 17:16:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/27 18:57:40 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 19:24:36 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,11 @@
 # define REQUEST		C_LGRAY "[Request]" C_RESET " "
 # define SUCCESS		C_GREEN "[Success]" C_RESET " "
 # define ERROR			C_RED "[Error]" C_RESET " "
+
+# define ERR_FILE_NO	"No such file or directory." ENDL
+# define ERR_FILE_RIGHT	"Permission denied." ENDL
+# define ERR_FILE_DIR	"Is a directory." ENDL
+# define ERR_FILE_LOOP	"Symbolic link loop detected." ENDL
+# define ERR_FILE_ERR	"Unexpected error." ENDL
 
 #endif

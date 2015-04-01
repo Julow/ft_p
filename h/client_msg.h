@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 15:22:03 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 19:46:54 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define USAGE			INFO "Usage: %s <ip> <port>" ENDL
 
 # define PROMPT			C_RESET "$> "
+# define EXISTS_PROMPT	C_RESET "File already exists. Overwrite ? "
+# define EXS_PMPT_HELP	"(y/n) "
+# define EXS_PMPT_RE	"(Please type 'y' or 'n') "
 
 # define RESP_PREFIX	C_GRAY "> "
 
@@ -38,5 +41,10 @@
 # define ERR_CANT_CON	ERROR "Cannot connect to %s:%d" ENDL
 
 # define ERR_BAD_CMD	ERROR "Unknown command: %s" ENDL
+
+# define ERR_RETV_RIGHT	ERROR "%s: File exists: " ERR_FILE_RIGHT
+# define ERR_RETV_DIR	ERROR "%s: File exists: " ERR_FILE_DIR
+# define ERR_RETV_LOOP	ERROR "%s: " ERR_FILE_LOOP
+# define ERR_RETV_ERR	ERROR "%s: Cannot acces: " ERR_FILE_ERR
 
 #endif
