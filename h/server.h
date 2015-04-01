@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:36 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 19:28:31 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 13:13:43 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_bool			parse_argv(t_server *serv, int argc, char **argv);
 void			handle_client(t_server *serv);
 
 int				exec_cmd(t_server *serv, const char *cmd);
+
+int				cmd_get(t_server *serv, const t_cmd *cmd, char **args);
 int				system_cmd(t_server *serv, const t_cmd *cmd, char **args);
 
 #endif

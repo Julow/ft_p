@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 19:01:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 19:38:49 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 13:11:05 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 const t_cmd		g_cmds[] = {
 	{"ls", &system_cmd, "/bin/ls"},
+	{"get", &cmd_get, NULL},
 	{NULL, NULL, NULL}
 };
 

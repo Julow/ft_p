@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 19:42:48 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 13:05:42 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 # define INFO_REQUEST	REQUEST "%s" ENDL
 
-# define SUCCS_CMD		SUCCESS "Command '%s' succefully executed!" ENDL
-# define ERR_CMD		ERROR "Command '%s' failed. (Code %d)" ENDL
+# define SUCCS_CMD		SUCCESS "Request '%s' succefully executed!" ENDL
+# define ERR_CMD		ERROR "Request '%s' failed. (Code %d)" ENDL
 # define ERR_BAD_RESP	ERROR "Bad response." ENDL
 
 # define ERR_NO_ARG		ERROR "Not enougth argument." ENDL

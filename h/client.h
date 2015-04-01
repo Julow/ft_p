@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 16:31:54 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 13:09:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ void			ft_buffclear(t_buff *buff);
 */
 void			prompt_user(t_client *client);
 
+t_bool			send_request(t_client *client, char **args);
+
 void			exec_cmd(t_client *client, t_sub *line);
 
+void			cmd_get(t_client *client, char **args);
 void			serv_cmd(t_client *client, char **args);
 
 #endif
