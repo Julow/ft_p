@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/27 18:08:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 13:13:12 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 15:39:34 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_socket
 ** ---
 ** get:
 **  c:			GET <file name><EOF>
-**  s (ok):		<EOF>0<EOF><file size><EOF><data><EOF>0<EOF>
+**  s (ok):		<EOF>0<EOF><name_len>\n<name>\n<size>\n<data><EOF>0<EOF>
 **  s (ko):		<error msg><EOF>1<EOF>
 ** ---
 ** put:

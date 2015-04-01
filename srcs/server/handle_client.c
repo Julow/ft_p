@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 16:29:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 19:41:09 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 17:40:28 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void			handle_client(t_server *serv)
 		else
 			ft_printf(ERR_CMD, tmp.content, error);
 		ft_flush(SOUT(serv));
+		ft_buffclear(SIN(serv));
 	}
 	free(tmp.content);
 }

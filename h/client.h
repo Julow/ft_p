@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 13:09:59 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/01 15:43:22 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,26 @@ typedef struct	s_cmd
 	void			(*f)(t_client*, char**);
 }				t_cmd;
 
+typedef struct	s_file
+{
+	char			*name;
+	int				size;
+}				t_file;
+
 int				ft_clientcreate(const char *addr, int port);
 
 t_bool			parse_argv(t_client *client, int argc, char **argv);
 
 void			ft_buffclear(t_buff *buff);
+t_bool			ft_parsedata(t_buff *buff, char *dst, int len);
 
 /*
 ** cmd
 */
 void			prompt_user(t_client *client);
 
-t_bool			send_request(t_client *client, char **args);
+void			send_request(t_client *client, char **args);
+t_bool			parse_response(t_client *client);
 
 void			exec_cmd(t_client *client, t_sub *line);
 
