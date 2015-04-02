@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 18:44:22 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 20:19:07 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct	s_client
 typedef struct	s_cmd
 {
 	char			*name;
-	void			(*f)(t_client*, char**);
+	void			(*f)(t_client*, const struct s_cmd*, char**);
+	char			*path;
 }				t_cmd;
 
 typedef struct	s_file
@@ -53,12 +54,13 @@ t_bool			parse_response(t_client *client, int *status);
 */
 void			exec_cmd(t_client *client, t_sub *line);
 
-void			cmd_get(t_client *client, char **args);
+void			sys_cmd(t_client *client, const t_cmd *cmd, char **args);
+void			serv_cmd(t_client *client, const t_cmd *cmd, char **args);
+
+void			cmd_get(t_client *client, const t_cmd *cmd, char **args);
 t_bool			retrieve_file(t_client *client, t_file *file);
 
-void			cmd_put(t_client *client, char **args);
-
-void			serv_cmd(t_client *client, char **args);
+void			cmd_put(t_client *client, const t_cmd *cmd, char **args);
 
 /*
 ** ft

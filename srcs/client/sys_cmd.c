@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   serv_cmd.c                                         :+:      :+:    :+:   */
+/*   sys_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/30 13:42:31 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 20:19:44 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/02 20:16:12 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/02 20:20:13 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
-#include "client_msg.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
 
-void			serv_cmd(t_client *client, const t_cmd *cmd, char **args)
+void			sys_cmd(t_client *client, const t_cmd *cmd, char **args)
 {
+	pid_t			pid;
 	int				status;
 
-	send_request(client, args);
-	if (parse_response(client, &status))
+	pid = fork();
+	if (pid < 0)
+		return ;
+	if (pid == 0)
 	{
-		if (status == 0)
-			ft_printf(SUCCS_CMD, args[0]);
-		else
-			ft_printf(ERR_CMD, args[0], status);
-		ft_buffclear(SIN(client));
+		execv(cmd->path, args);
+		exit(1);
 	}
-	(void)cmd;
+	wait4(pid, &status, 0, NULL);
+	(void)client;
 }
