@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:55:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 15:46:59 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 19:08:58 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_bool	parse_resp(t_client *client, t_file *file)
 	if (!ft_parsedata(SIN(client), file->name, tmp) || !BIS(SIN(client), '\n'))
 		return (free(file->name), false);
 	file->name[tmp] = '\0';
-	if (!ft_parseint(SIN(client), &(file->size)) || !BIS(SIN(client), '\n'))
+	if (!ft_parseint(SIN(client), &(file->size)) || !BIS(SIN(client), EOF))
 		return (free(file->name), false);
 	return (true);
 }

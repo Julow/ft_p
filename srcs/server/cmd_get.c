@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:54:50 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 15:28:02 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 18:53:52 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int				cmd_get(t_server *serv, const t_cmd *cmd, char **args)
 {
 	int				fd;
 	struct stat		stats;
+	int				tmp;
 
 	if (args[1] == NULL)
 		return (ft_writestr(SOUT(serv), RESP_NEEDARG), 2);
@@ -69,7 +70,12 @@ int				cmd_get(t_server *serv, const t_cmd *cmd, char **args)
 	ft_writestr(SOUT(serv), args[1]);
 	ft_writechar(SOUT(serv), '\n');
 	ft_writeint(SOUT(serv), stats.st_size);
-	ft_writechar(SOUT(serv), '\n');
+	ft_writechar(SOUT(serv), EOF);
+	ft_flush(SOUT(serv));
+	if (!ft_parseint(SIN(serv), &tmp) || !BIS(SIN(serv), EOF))
+		return (ft_writestr(SOUT(serv), RESP_ERROR), close(fd), 2);
+	if (tmp == 0)
+		return (close(fd), 0);
 	ft_writefile(SOUT(serv), fd);
 	ft_flush(SOUT(serv));
 	close(fd);
