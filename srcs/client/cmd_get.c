@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:55:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 19:48:40 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 15:46:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ static t_bool	parse_resp(t_client *client, t_file *file)
 void			cmd_get(t_client *client, char **args)
 {
 	t_file			file;
+	int				status;
 
 	send_request(client, args);
-	BG(SIN(client));
-	if (!parse_response(client))
+	if (!parse_response(client, &status))
 		return ;
+	if (status != 0)
+	{
+		ft_fdprintf(2, ERR_CMD, args[0], status);
+		return ;
+	}
 	if (!parse_resp(client, &file))
 	{
 		ft_fdprintf(2, ERR_BAD_RESP);
@@ -47,6 +52,6 @@ void			cmd_get(t_client *client, char **args)
 	if (retrieve_file(client, &file))
 		ft_printf(SUCCS_GET, args[1]);
 	free(file.name);
-	if (!parse_response(client))
-		ft_buffclear(SIN(client));
+	if (!parse_response(client, &status) || status != 0)
+		ft_fdprintf(2, ERR_BAD_RESP);
 }

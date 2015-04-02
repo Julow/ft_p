@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:54:50 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 19:10:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 15:28:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ int				cmd_get(t_server *serv, const t_cmd *cmd, char **args)
 	ft_writestr(SOUT(serv), args[1]);
 	ft_writestr(SOUT(serv), "\nSize: ");
 	ft_writeint(SOUT(serv), stats.st_size);
-	ft_writechar(SOUT(serv), EOF);
-	ft_writechar(SOUT(serv), '0');
-	ft_writechar(SOUT(serv), EOF);
+	write_eor(serv, 0);
 	ft_writeint(SOUT(serv), ft_strlen(args[1]));
 	ft_writechar(SOUT(serv), '\n');
 	ft_writestr(SOUT(serv), args[1]);

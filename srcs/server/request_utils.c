@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   serv_cmd.c                                         :+:      :+:    :+:   */
+/*   request_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/30 13:42:31 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 15:21:17 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/02 15:23:36 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/02 16:15:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
-#include "client_msg.h"
+#include "server.h"
 
-void			serv_cmd(t_client *client, char **args)
+void			write_eor(t_server *serv, int status)
 {
-	send_request(client, args);
-	if (parse_response(client))
-	{
-		ft_printf(SUCCS_CMD, args[1]);
-		ft_buffclear(SIN(client));
-	}
+	ft_writechar(SOUT(serv), EOF);
+	ft_writeint(SOUT(serv), status);
+	ft_writechar(SOUT(serv), EOF);
+	ft_flush(SOUT(serv));
 }

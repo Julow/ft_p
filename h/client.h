@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 19:45:43 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 15:43:28 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,40 @@ typedef struct	s_file
 	int				size;
 }				t_file;
 
-int				ft_clientcreate(const char *addr, int port);
-
+/*
+** main
+*/
 t_bool			parse_argv(t_client *client, int argc, char **argv);
-
-void			ft_buffclear(t_buff *buff);
-t_bool			ft_parsedata(t_buff *buff, char *dst, int len);
-
-t_bool			retrieve_file(t_client *client, t_file *file);
 
 void			prompt_user(t_client *client);
 
+/*
+** request_utils.c
+*/
 void			send_request(t_client *client, char **args);
-t_bool			parse_response(t_client *client);
+t_bool			parse_response(t_client *client, int *status);
 
+/*
+** exec_cmd.c
+** cmds
+*/
 void			exec_cmd(t_client *client, t_sub *line);
 
 void			cmd_get(t_client *client, char **args);
+void			cmd_put(t_client *client, char **args);
 void			serv_cmd(t_client *client, char **args);
+
+/*
+** retrieve_file.c
+** files utils
+*/
+t_bool			retrieve_file(t_client *client, t_file *file);
+
+/*
+** ft
+*/
+int				ft_clientcreate(const char *addr, int port);
+void			ft_buffclear(t_buff *buff);
+t_bool			ft_parsedata(t_buff *buff, char *dst, int len);
 
 #endif

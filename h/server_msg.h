@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 19:24:29 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 15:16:24 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@
 # define RESP_ERROR		"Unexpected error" ENDL
 # define RESP_UNSUPTED	"Unsupported command" ENDL
 # define RESP_NEEDARG	"Please specify an argument" ENDL
+# define RESP_OVRWRITE	"File already exists. Overwrite ?" ENDL
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 16:29:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 17:40:28 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 16:15:53 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ void			handle_client(t_server *serv)
 		ft_buffclear(SIN(serv));
 		ft_printf(INFO_REQUEST, tmp.content);
 		error = exec_cmd(serv, tmp.content);
-		ft_writechar(SOUT(serv), EOF);
-		ft_writeint(SOUT(serv), error);
-		ft_writechar(SOUT(serv), EOF);
 		if (error == 0)
 			ft_printf(SUCCS_CMD, tmp.content);
 		else
 			ft_printf(ERR_CMD, tmp.content, error);
-		ft_flush(SOUT(serv));
+		write_eor(serv, error);
 		ft_buffclear(SIN(serv));
 	}
 	free(tmp.content);

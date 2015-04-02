@@ -1,45 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   response.c                                         :+:      :+:    :+:   */
+/*   serv_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/01 15:19:43 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 15:48:30 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/30 13:42:31 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/02 16:33:27 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 #include "client_msg.h"
 
-t_bool			parse_response(t_client *client)
+void			serv_cmd(t_client *client, char **args)
 {
-	int				c;
+	int				status;
 
-	c = '\n';
-	while (BG(SIN(client)) != EOF)
+	send_request(client, args);
+	if (parse_response(client, &status))
 	{
-		if (c == '\n')
-			FL, PS(RESP_PREFIX);
-		c = BR(SIN(client));
-		PC(c);
-	}
-	if (c != '\n')
-		PC('\n');
-	FL;
-	if (!BIS(SIN(client), EOF) || !ft_parseint(SIN(client), &c)
-		|| !BIS(SIN(client), EOF))
-	{
-		ft_fdprintf(2, ERR_BAD_RESP);
+		if (status == 0)
+			ft_printf(SUCCS_CMD, args[0]);
+		else
+			ft_printf(ERR_CMD, args[0], status);
 		ft_buffclear(SIN(client));
-		return (false);
 	}
-	if (c != 0)
-	{
-		ft_buffclear(SIN(client));
-		ft_fdprintf(2, ERR_CMD, c);
-		return (false);
-	}
-	return (true);
 }

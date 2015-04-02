@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 19:19:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/01 19:45:26 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/02 15:14:32 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int		get_fd(t_file *file)
 	if (errno == EEXIST)
 	{
 		if ((fd = prompt_get_fd(file)) != -1)
-			return (-1);
+			return (fd);
 	}
 	if (errno == EACCES)
 		ft_fdprintf(2, ERR_RETV_RIGHT, file->name);
