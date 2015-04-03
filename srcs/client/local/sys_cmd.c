@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/02 20:16:12 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 20:20:13 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/03 12:23:05 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/03 12:23:54 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
-void			sys_cmd(t_client *client, const t_cmd *cmd, char **args)
+void			sys_cmd(t_client *client, const t_lcmd *cmd, char **args)
 {
 	pid_t			pid;
 	int				status;

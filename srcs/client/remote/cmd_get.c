@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:55:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 20:19:35 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:28:44 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_bool	parse_resp(t_client *client, t_file *file)
 	return (true);
 }
 
-void			cmd_get(t_client *client, const t_cmd *cmd, char **args)
+void			cmd_get(t_client *client, char **args)
 {
 	t_file			file;
 	int				status;
@@ -54,5 +54,4 @@ void			cmd_get(t_client *client, const t_cmd *cmd, char **args)
 	free(file.name);
 	if (!parse_response(client, &status) || status != 0)
 		ft_fdprintf(2, ERR_BAD_RESP);
-	(void)cmd;
 }

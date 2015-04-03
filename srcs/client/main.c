@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:41:58 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 13:37:36 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:29:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				main(int argc, char **argv)
 		return (ft_fdprintf(2, ERR_CANT_CON,
 			client.serv_addr, client.serv_port), 1);
 	ft_printf(INFO_CONNTED);
-	prompt_user(&client);
+	remote_mode(&client);
 	close(client.sock.fd);
 	return (0);
 }

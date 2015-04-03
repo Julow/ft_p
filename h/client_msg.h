@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 15:47:38 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:22:20 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 # define USAGE			INFO "Usage: %s <ip> <port>" ENDL
 
-# define PROMPT			C_RESET "$> "
+# define REMOTE_PROMPT	C_RESET "remote > "
+# define LOCAL_PROMPT	C_RESET "local > "
+
 # define EXISTS_PROMPT	C_RESET "File already exists. Overwrite ? "
 # define EXS_PMPT_HELP	"(y/n) "
 # define EXS_PMPT_RE	"(Please type 'y' or 'n') "

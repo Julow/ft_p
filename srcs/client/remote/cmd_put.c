@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/02 15:01:03 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 20:19:30 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:29:23 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_bool	prompt_overwrite(t_client *client, int *status)
 	return (parse_response(client, status));
 }
 
-void			cmd_put(t_client *client, const t_cmd *cmd, char **args)
+void			cmd_put(t_client *client, char **args)
 {
 	int				status;
 
@@ -53,5 +53,4 @@ void			cmd_put(t_client *client, const t_cmd *cmd, char **args)
 		ft_fdprintf(2, ERR_CMD, args[0], status);
 		return ;
 	}
-	(void)cmd;
 }

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 20:19:07 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:47:16 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ typedef struct	s_client
 typedef struct	s_cmd
 {
 	char			*name;
-	void			(*f)(t_client*, const struct s_cmd*, char**);
-	char			*path;
+	void			(*f)(t_client*, char**);
 }				t_cmd;
+
+typedef struct	s_lcmd
+{
+	char			*name;
+	void			(*f)(t_client*, const struct s_lcmd*, char**);
+	char			*path;
+}				t_lcmd;
 
 typedef struct	s_file
 {
@@ -43,28 +49,31 @@ t_bool			parse_argv(t_client *client, int argc, char **argv);
 void			prompt_user(t_client *client);
 
 /*
-** request_utils.c
+** remove mode
 */
+void			remote_mode(t_client *client);
+
 void			send_request(t_client *client, char **args);
 t_bool			parse_response(t_client *client, int *status);
 
-/*
-** exec_cmd.c
-** cmds
-*/
-void			exec_cmd(t_client *client, t_sub *line);
+void			serv_cmd(t_client *client, char **args);
 
-void			sys_cmd(t_client *client, const t_cmd *cmd, char **args);
-void			serv_cmd(t_client *client, const t_cmd *cmd, char **args);
-
-void			cmd_get(t_client *client, const t_cmd *cmd, char **args);
+void			cmd_get(t_client *client, char **args);
 t_bool			retrieve_file(t_client *client, t_file *file);
 
-void			cmd_put(t_client *client, const t_cmd *cmd, char **args);
+void			cmd_put(t_client *client, char **args);
+
+/*
+** local mode
+*/
+void			local_mode(t_client *client, char **args);
+
+void			sys_cmd(t_client *client, const t_lcmd *cmd, char **args);
 
 /*
 ** ft
 */
+void			ft_splitfree(char **split);
 int				ft_clientcreate(const char *addr, int port);
 void			ft_buffclear(t_buff *buff);
 t_bool			ft_parsedata(t_buff *buff, char *dst, int len);
