@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writebase.c                                     :+:      :+:    :+:   */
+/*   ft_parsequote.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 21:23:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/31 18:15:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/03 01:27:11 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/03 01:27:23 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_internal.h"
+#include "libft.h"
 
-void			ft_writebase(t_out *out, t_ulong n, const char *base)
+t_bool			ft_parsequote(t_buff *buff, t_string *dst)
 {
-	const t_uint	base_len = ft_strlen(base);
-	char			nb[PUTBASE_BUFF];
-	t_uint			i;
+	char			quote;
 
-	i = PUTBASE_BUFF;
-	if (n == 0)
-		nb[--i] = base[0];
-	while (n != 0)
+	if (BIS(buff, '"'))
+		quote = '"';
+	else if (BIS(buff, '\''))
+		quote = '\'';
+	else
+		return (false);
+	while (!BEOF(buff))
 	{
-		nb[--i] = base[(n % base_len)];
-		n /= base_len;
+		if (BIS(buff, '\\'))
+			ft_stringaddc(dst, ft_unescape(BR(buff)));
+		else if (BIS(buff, quote))
+			return (true);
+		else
+			ft_stringaddc(dst, BR(buff));
 	}
-	ft_write(out, nb + i, PUTBASE_BUFF - i);
+	return (false);
 }

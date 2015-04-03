@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writebase.c                                     :+:      :+:    :+:   */
+/*   ft_strbrace.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 21:23:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/31 18:15:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/30 01:34:49 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/30 01:40:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_internal.h"
+#include "libft.h"
 
-void			ft_writebase(t_out *out, t_ulong n, const char *base)
+int				ft_strbrace(const char *str, char open, char close)
 {
-	const t_uint	base_len = ft_strlen(base);
-	char			nb[PUTBASE_BUFF];
-	t_uint			i;
+	int				i;
+	int				openned;
 
-	i = PUTBASE_BUFF;
-	if (n == 0)
-		nb[--i] = base[0];
-	while (n != 0)
+	i = -1;
+	openned = 0;
+	while (str[++i] != 0)
 	{
-		nb[--i] = base[(n % base_len)];
-		n /= base_len;
+		if (str[i] == open)
+			openned++;
+		else if (str[i] == close)
+		{
+			openned--;
+			if (openned < 0)
+				break ;
+		}
 	}
-	ft_write(out, nb + i, PUTBASE_BUFF - i);
+	return (i);
 }

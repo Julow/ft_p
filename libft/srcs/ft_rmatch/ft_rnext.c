@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writebase.c                                     :+:      :+:    :+:   */
+/*   ft_rnext.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 21:23:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/31 18:15:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/29 20:59:13 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/29 21:04:43 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_internal.h"
+#include "libft.h"
 
-void			ft_writebase(t_out *out, t_ulong n, const char *base)
+/*
+** ft_rnext
+** ---
+** Take the result of ft_rfind and find the next result
+** The param 'pattern' does not need to be exactly the same
+** ---
+** Return ft_rfind
+** ---
+*/
+t_bool			ft_rnext(t_sub *last, const char *pattern)
 {
-	const t_uint	base_len = ft_strlen(base);
-	char			nb[PUTBASE_BUFF];
-	t_uint			i;
-
-	i = PUTBASE_BUFF;
-	if (n == 0)
-		nb[--i] = base[0];
-	while (n != 0)
-	{
-		nb[--i] = base[(n % base_len)];
-		n /= base_len;
-	}
-	ft_write(out, nb + i, PUTBASE_BUFF - i);
+	return (ft_rfind(last, last->str + last->length, pattern));
 }
