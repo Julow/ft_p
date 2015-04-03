@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/02 15:00:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 16:41:55 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:53:27 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int				cmd_put(t_server *serv, const t_cmd *cmd, char **args)
 	ft_writestr(SOUT(serv), "fd: ");
 	ft_writeint(SOUT(serv), fd);
 	(void)cmd;
-	// ft_writestr(SOUT(serv), "OK\n");
 	close(fd);
 	return (0);
 }

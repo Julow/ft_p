@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:18:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:47:50 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 16:11:52 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ const t_cmd		g_cmds[] = {
 	{"GET", &cmd_get},
 	{"PUT", &cmd_put},
 	{"L", &local_mode},
+	{"H", &cmd_help},
+	{"HELP", &cmd_help},
 	{NULL, NULL}
 };
 

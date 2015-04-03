@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/09 12:51:40 by jaguillo          #+#    #+#              #
-#    Updated: 2015/03/26 15:33:15 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/04/03 13:09:55 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,14 +60,14 @@ all:
 # Build the project
 $(NAME): $(O_FILES)
 	@clang $(FLAGS) $(HEADS) $(LINKS) -o $@ $^ && printf "\033[0;32m" || printf "\033[0;31m"
-	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
+	@printf "\r%-34s \033[1;30m<<-- %34c\033[0;0m\n" "$@" " "
 
 # Compile a source file
 $(O_DIR)/%.o: $(C_DIR)/%.c $(H_DIR) $(MAKES)
 	@mkdir -p $(O_DIRS) $(O_DIR) 2> /dev/null || echo "" > /dev/null
 	@clang $(FLAGS) $(HEADS) -o $@ -c $< \
-	&& printf "\033[0;0m%-34s\033[1;30m -->> \033[0;32m$@\033[0;0m\n" "$<" \
-	|| (printf "\033[0;0m%-34s\033[1;30m -->> \033[0;31m$@\033[0;0m\n" "$<" \
+	&& printf "\r\033[0;0m%-34s\033[1;30m -->> \033[0;32m$@\033[0;0m" "$<" \
+	|| (printf "\n\033[0;0m%-34s\033[1;30m -->> \033[0;31m$@\033[0;0m\n" "$<" \
 		&& exit 1)
 
 # Enable debug mode and build all

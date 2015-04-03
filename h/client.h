@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:47:16 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 16:09:39 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_bool			parse_response(t_client *client, int *status);
 
 void			serv_cmd(t_client *client, char **args);
 
+void			cmd_help(t_client *client, char **args);
+
 void			cmd_get(t_client *client, char **args);
 t_bool			retrieve_file(t_client *client, t_file *file);
 
@@ -67,6 +69,8 @@ void			cmd_put(t_client *client, char **args);
 ** local mode
 */
 void			local_mode(t_client *client, char **args);
+
+void			lcmd_help(t_client *client, const t_lcmd *cmd, char **args);
 
 void			sys_cmd(t_client *client, const t_lcmd *cmd, char **args);
 

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:55:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:28:44 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 12:52:25 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,9 @@ void			cmd_get(t_client *client, char **args)
 	if (!parse_response(client, &status))
 		return ;
 	if (status != 0)
-	{
-		ft_fdprintf(2, ERR_CMD, args[0], status);
-		return ;
-	}
+		return (ft_fdprintf(2, ERR_CMD, args[0], status), VOID);
 	if (!parse_resp(client, &file))
-	{
-		ft_fdprintf(2, ERR_BAD_RESP);
-		ft_buffclear(SIN(client));
-		return ;
-	}
+		return (ft_fdprintf(2, ERR_BAD_RESP), ft_buffclear(SIN(client)), VOID);
 	if (retrieve_file(client, &file))
 		ft_printf(SUCCS_GET, args[1]);
 	free(file.name);

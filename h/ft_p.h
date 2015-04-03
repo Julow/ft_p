@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/27 18:08:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 19:05:10 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 13:01:10 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct	s_socket
 # define SOUT(c)	(&((c)->sock.out))
 
 # define BUFF_SIZE	512
+
+# define VOID		((void)0)
+
+typedef struct stat		t_stat;
 
 /*
 ** ========================================================================== **

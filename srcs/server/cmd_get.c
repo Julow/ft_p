@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:54:50 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 18:53:52 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 13:03:12 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		ft_writefile(t_out *dst, int fd)
 	ft_flush(dst);
 }
 
-int				open_file(t_server *serv, const char *file, struct stat *stats)
+int				open_file(t_server *serv, const char *file, t_stat *stats)
 {
 	int				fd;
 

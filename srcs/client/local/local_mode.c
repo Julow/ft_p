@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:13:31 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:48:03 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 16:11:47 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 const t_lcmd	g_lcmds[] = {
 	{"LS", &sys_cmd, "/bin/ls"},
+	{"PWD", &sys_cmd, "/bin/pwd"},
+	{"MKDIR", &sys_cmd, "/bin/mkdir"},
+	{"RMDIR", &sys_cmd, "/bin/rmdir"},
+	{"TOUCH", &sys_cmd, "/bin/touch"},
+	{"RM", &sys_cmd, "/bin/rm"},
+	{"MV", &sys_cmd, "/bin/mv"},
+	{"H", &lcmd_help, NULL},
+	{"HELP", &lcmd_help, NULL},
 	{NULL, NULL, NULL}
 };
 
