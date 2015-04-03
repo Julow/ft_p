@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 16:09:39 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 19:35:45 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_lcmd
 typedef struct	s_file
 {
 	char			*name;
+	int				fd;
 	int				size;
 }				t_file;
 
@@ -77,9 +78,7 @@ void			sys_cmd(t_client *client, const t_lcmd *cmd, char **args);
 /*
 ** ft
 */
-void			ft_splitfree(char **split);
 int				ft_clientcreate(const char *addr, int port);
-void			ft_buffclear(t_buff *buff);
-t_bool			ft_parsedata(t_buff *buff, char *dst, int len);
+void			ft_writefile(t_out *dst, int fd);
 
 #endif

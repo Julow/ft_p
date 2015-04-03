@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:54:50 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 13:03:12 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 19:25:11 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-
-static void		ft_writefile(t_out *dst, int fd)
-{
-	char			buff[BUFF_SIZE];
-	int				len;
-
-	while ((len = read(fd, buff, BUFF_SIZE)) > 0)
-		ft_write(dst, buff, len);
-	ft_flush(dst);
-}
 
 int				open_file(t_server *serv, const char *file, t_stat *stats)
 {

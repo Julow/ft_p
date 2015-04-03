@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffclear.c                                     :+:      :+:    :+:   */
+/*   ft_writefile.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/30 16:04:53 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 16:05:35 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/03 19:24:14 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/03 19:40:33 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
+#include <unistd.h>
 
-void			ft_buffclear(t_buff *buff)
+void			ft_writefile(t_out *dst, int fd)
 {
-	buff->i = 0;
-	buff->length = 0;
+	char			buff[BUFF_SIZE];
+	int				len;
+
+	while ((len = read(fd, buff, BUFF_SIZE)) > 0)
+		ft_write(dst, buff, len);
+	ft_flush(dst);
 }

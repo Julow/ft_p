@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:22:20 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 19:05:11 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@
 # define ERR_CANT_CON	ERROR "Cannot connect to %s:%d" ENDL
 
 # define ERR_BAD_CMD	ERROR "Unknown command: %s" ENDL
+
+# define ERR_OPN_NO		ERROR "%s: " ERR_FILE_NO
+# define ERR_OPN_RIGHT	ERROR "%s: " ERR_FILE_RIGHT
+# define ERR_OPN_DIR	ERROR "%s: " ERR_FILE_DIR
+# define ERR_OPN_LOOP	ERROR "%s: " ERR_FILE_LOOP
+# define ERR_OPN_ERR	ERROR "%s: " ERR_FILE_ERR
 
 # define ERR_RETV_RIGHT	ERROR "%s: File exists: " ERR_FILE_RIGHT
 # define ERR_RETV_DIR	ERROR "%s: File exists: " ERR_FILE_DIR

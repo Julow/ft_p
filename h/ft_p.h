@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/27 18:08:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 13:01:10 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 18:26:15 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct stat		t_stat;
 **  c (ovwr):	<1 or 0><EOF>
 **  s (ok):		<EOF>0<EOF>
 **  s (ko):		<error msg><EOF>1<EOF>
-**  c:			UPLOAD <file size><EOF><data>
+**  c:			<file size><EOF><data>
 **  s (ok):		0<EOF>
 **  s (ko):		1\n<error msg><EOF>
 ** ---

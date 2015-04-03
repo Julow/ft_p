@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 12:55:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:52:25 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 16:59:22 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_bool	parse_resp(t_client *client, t_file *file)
 		return (false);
 	if ((file->name = MAL(char, tmp + 1)) == NULL)
 		return (false);
-	if (!ft_parsedata(SIN(client), file->name, tmp) || !BIS(SIN(client), '\n'))
+	if (!ft_parsen(SIN(client), file->name, tmp) || !BIS(SIN(client), '\n'))
 		return (free(file->name), false);
 	file->name[tmp] = '\0';
 	if (!ft_parseint(SIN(client), &(file->size)) || !BIS(SIN(client), EOF))

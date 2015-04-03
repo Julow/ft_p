@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/02 15:00:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 12:53:27 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 20:16:13 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,21 @@ static int		get_fd(t_server *serv, const char *file)
 int				cmd_put(t_server *serv, const t_cmd *cmd, char **args)
 {
 	int				fd;
+	char			buff[BUFF_SIZE];
+	t_out			out;
+	int				size;
 
 	if ((fd = get_fd(serv, args[1])) < 0)
 		return (1);
-	ft_writestr(SOUT(serv), "fd: ");
-	ft_writeint(SOUT(serv), fd);
-	(void)cmd;
+	write_eor(serv, 0);
+	ft_printf("WAIT FOR FILE\n");
+	if (!ft_parseint(SIN(serv), &size) || !BIS(SIN(serv), EOF))
+		return (ft_fdprintf(2, RESP_ERROR), close(fd), 1);
+	out = OUT(fd, buff, BUFF_SIZE);
+	while (size-- > 0)
+		ft_writechar(&out, BR(SIN(serv)));
+	ft_flush(&out);
 	close(fd);
+	(void)cmd;
 	return (0);
 }

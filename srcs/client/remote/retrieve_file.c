@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 19:19:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 19:05:12 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 19:36:47 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,23 @@ static int		get_fd(t_file *file)
 
 t_bool			retrieve_file(t_client *client, t_file *file)
 {
-	int				fd;
 	char			buff[BUFF_SIZE];
 	t_out			out;
 	int				i;
 
-	if ((fd = get_fd(file)) < 0)
+	if ((file->fd = get_fd(file)) < 0)
 		ft_writechar(SOUT(client), '0');
 	else
 		ft_writechar(SOUT(client), '1');
 	ft_writechar(SOUT(client), EOF);
 	ft_flush(SOUT(client));
-	if (fd < 0)
+	if (file->fd < 0)
 		return (false);
-	out = OUT(fd, buff, BUFF_SIZE);
+	out = OUT(file->fd, buff, BUFF_SIZE);
 	i = file->size;
 	while (i-- > 0)
 		ft_writechar(&out, BR(SIN(client)));
 	ft_flush(&out);
-	close(fd);
+	close(file->fd);
 	return (true);
 }

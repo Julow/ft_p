@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:36 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 16:36:29 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 19:25:21 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ typedef struct	s_cmd
 }				t_cmd;
 
 int				ft_servcreate(int port);
-
-void			ft_buffclear(t_buff *buff);
+void			ft_writefile(t_out *dst, int fd);
 
 t_bool			parse_argv(t_server *serv, int argc, char **argv);
 
