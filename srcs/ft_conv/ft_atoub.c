@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_percent.c                                     :+:      :+:    :+:   */
+/*   ft_atoub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/27 12:53:30 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/09 11:35:26 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/30 13:18:03 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/30 13:18:37 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_internal.h"
+#include "libft.h"
 
-void			flag_percent(t_string *out, t_opt *opt, va_list *ap)
+int				ft_atoub(const char *str, t_uint *nb)
 {
-	char			c;
+	int				i;
 
-	c = '%';
-	add_string(out, &c, 1, opt);
-	(void)ap;
+	*nb = 0;
+	i = 0;
+	while (ft_iswhite(str[i]))
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+		*nb = *nb * 10 + (str[i++] - '0');
+	return (i);
 }

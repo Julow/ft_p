@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 11:52:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/25 15:27:57 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/03 15:52:33 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@
 ** ========================================================================== **
 ** Config
 ** ---
+** REG_START
 ** BUFF_SIZE
 ** FTOUT_BUFF
 ** GNL_BUFF
@@ -258,6 +259,8 @@ t_uint			ft_strcskip(const char *str, const char *skip);
 t_uint			ft_strskipe(const char *str, const char *skip);
 t_uint			ft_strcskipe(const char *str, const char *skip);
 
+int				ft_strbrace(const char *str, char open, char close);
+
 /*
 ** ========================================================================== **
 ** String test
@@ -305,6 +308,7 @@ char			*ft_strmapi(const char *s, char (*f)(int, char));
 # define BASE_8			"01234567"
 # define BASE_10		"0123456789"
 # define BASE_16		"0123456789ABCDEF"
+# define BASE_16_LOWER	"0123456789abcdef"
 # define BASE_36		"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 # define LOWER(c)		(((c) >= 'A' && (c) <= 'Z') ? (c) + 32 : (c))
@@ -314,6 +318,9 @@ int				ft_atoi(const char *str);
 t_long			ft_atol(const char *str);
 double			ft_atod(const char *str);
 
+int				ft_atoib(const char *str, int *nb);
+int				ft_atoub(const char *str, t_uint *nb);
+
 int				ft_itoab(int n, char *buff);
 
 char			*ft_itoa(int n);
@@ -321,6 +328,9 @@ char			*ft_ltoa(t_long n);
 
 char			*ft_itobase(t_ulong nb, const char *base);
 t_ulong			ft_basetoi(const char *str, const char *base);
+
+char			ft_escape(char c);
+char			ft_unescape(char c);
 
 int				ft_toupper(int c);
 int				ft_tolower(int c);
@@ -352,6 +362,59 @@ t_bool			ft_randbool(double chance);
 */
 
 char			*ft_getenv(const char *key);
+
+void			ft_splitfree(char **split);
+
+/*
+** ========================================================================== **
+** Regex
+** ---
+** ?<opt><n><match>
+** ?<opt><n><match>|<opt><n><match>| ...
+** ---
+** opt: (cummulable but need to be in this order)
+** - !		Match not (invert matching)
+** - i		Lower case (str is treated as lower, match need to be lower case)
+** ---
+** n:
+** - 1		Match 1 (Default)
+** - ?		Match 0 or 1
+** - *		Match 0 or more
+** - +		Match 1 or more
+** - n		Match n
+** - n,		Match n or more
+** - n,N	Match n to N
+** ---
+** match:
+** - .		Match any char (except '\0')
+** - w		ft_isword		[a-zA-Z0-9_]
+** - a		ft_isalpha		[a-zA-Z]
+** - n		ft_isalnum		[a-zA-Z0-9]
+** - c		ft_isascii		.
+** - d		ft_isdigit		[0-9]
+** - p		ft_isprint		[ -~]
+** - s		ft_isspace		[ \t]
+** - h		ft_iswhite		[ \t\n\r\v\f]
+** - :a		Match a char
+** - &i		Match a valid int
+** - [abc]	Match a set of char
+** - [a-z]	Match an interval of char (cummulable with char set)
+** - 'abc'	Match a string
+** - (abc)	Match a string (can contains regex)
+** ---
+** TODO:
+** - global lower case mode (?i;)
+** - str end (?$)
+** - sprintf like parsing (using va_arg)
+** ---
+*/
+
+t_bool			ft_rmatch(const char *str, const char *pattern);
+int				ft_rtest(const char *str, const char *pattern);
+t_bool			ft_rfind(t_sub *dst, const char *str, const char *pattern);
+t_bool			ft_rnext(t_sub *last, const char *pattern);
+
+int				ft_matchint(const char *str);
 
 /*
 ** ========================================================================== **
@@ -577,6 +640,7 @@ typedef struct	s_buff
 
 char			ft_readbuff(t_buff *buff);
 char			ft_buffget(t_buff *buff);
+void			ft_buffclear(t_buff *buff);
 
 t_bool			ft_parseint(t_buff *buff, int *nb);
 t_bool			ft_parselong(t_buff *buff, t_long *nb);
@@ -593,8 +657,10 @@ int				ft_parsesub(t_buff *buff, t_string *dst, const char *parse);
 int				ft_parsesubf(t_buff *buff, t_string *dst, t_bool (*f)(int c));
 int				ft_parsesubnf(t_buff *buff, t_string *dst, t_bool (*f)(int c));
 int				ft_parseline(t_buff *buff, t_string *dst);
+t_bool			ft_parsequote(t_buff *buff, t_string *dst);
 
 void			ft_parseendl(t_buff *buff);
+t_bool			ft_parsen(t_buff *buff, char *dst, int len);
 
 t_bool			ft_parsef(t_buff *buff, t_bool (*f)(int c));
 t_bool			ft_parsespace(t_buff *buff);
@@ -636,7 +702,7 @@ extern t_out	g_ftout;
 
 # define FTOUT			(&g_ftout)
 
-# define P(d,l)			(ft_write(FTOUT, (d), (l)))
+# define P(f, ...)		(ft_writef(FTOUT, (f), __VA_ARGS__))
 # define PS(s)			(ft_writestr(FTOUT, (s)))
 # define PC(c)			(ft_writechar(FTOUT, (c)))
 # define PCN(c,n)		(ft_writenchar(FTOUT, (c), (n)))
@@ -797,18 +863,14 @@ int				get_next_line(int const fd, t_sub *line);
 */
 
 # ifdef DEBUG_MODE
-#  define DEBUG(d, ...) ft_debug(__func__, __FILE__, __LINE__, d, __VA_ARGS__)
-#  define TRACE			ft_debug(__func__, __FILE__, __LINE__, NULL)
+#  define TRACE			ft_printf("%s %s:%d\n", __func__, __FILE__, __LINE__)
 # else
-#  define DEBUG(d, ...)
 #  define TRACE
 # endif
 
 int				ft_printf(const char *format, ...);
 int				ft_fdprintf(const int fd, const char *format, ...);
-t_string		*ft_stringf(const char *format, ...);
-
-void			ft_debug(const char *c, char *f, int l, const char *s, ...);
+int				ft_writef(t_out *out, const char *format, ...);
 
 /*
 ** ========================================================================== **

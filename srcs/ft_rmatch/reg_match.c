@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writebase.c                                     :+:      :+:    :+:   */
+/*   reg_match.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 21:23:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/31 18:15:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/27 14:13:14 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/30 01:58:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_internal.h"
 
-void			ft_writebase(t_out *out, t_ulong n, const char *base)
+static void		skip_or(const char **pattern)
 {
-	const t_uint	base_len = ft_strlen(base);
-	char			nb[PUTBASE_BUFF];
-	t_uint			i;
+	t_reg			tmp;
 
-	i = PUTBASE_BUFF;
-	if (n == 0)
-		nb[--i] = base[0];
-	while (n != 0)
+	while (**pattern == '|')
+		*pattern = reg_parse(&tmp, *pattern + 1);
+}
+
+const char		*reg_match(const char *str, const char **pattern)
+{
+	t_reg			reg;
+	char const		*tmp;
+
+	*pattern = reg_parse(&reg, (*pattern) + 1);
+	if (**pattern == '|')
 	{
-		nb[--i] = base[(n % base_len)];
-		n /= base_len;
+		if ((tmp = reg_match(str, pattern)) != NULL)
+			return (tmp);
+		skip_or(pattern);
 	}
-	ft_write(out, nb + i, PUTBASE_BUFF - i);
+	return (reg_reg(&reg, str, *pattern, 1));
 }

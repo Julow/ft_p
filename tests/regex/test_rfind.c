@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writenchar.c                                    :+:      :+:    :+:   */
+/*   test_rfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 21:21:01 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/31 16:40:55 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/29 20:37:52 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/30 13:09:20 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void			ft_writenchar(t_out *out, char c, int n)
+int				main(int argc, char **argv)
 {
-	int				free_buff;
+	t_sub			sub;
 
-	if (n <= 0)
-		return ;
-	while (true)
+	if (argc > 2)
 	{
-		free_buff = out->length - out->i;
-		if (n <= free_buff)
-			break ;
-		ft_writenchar(out, c, free_buff);
-		ft_flush(out);
-		n -= free_buff;
+		if (ft_rfind(&sub, argv[1], argv[2]))
+		{
+			printf("'%.*s'  l: %d ; o: %ld\n", sub.length, sub.str,
+				sub.length, sub.str - argv[1]);
+			while (ft_rnext(&sub, argv[2]))
+				printf("- '%.*s'  l: %d ; o: %ld\n", sub.length, sub.str,
+					sub.length, sub.str - argv[1]);
+		}
+		else
+			printf("NULL\n");
 	}
-	ft_memset(out->buff + out->i, c, n);
-	out->i += n;
+	return (0);
 }
