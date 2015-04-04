@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/27 18:08:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 18:26:15 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/04 23:45:20 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ typedef struct stat		t_stat;
 **  c:			CMD <arg ...><EOF>
 **  s (ok):		<data><EOF>0<EOF>
 **  s (ko):		<data><EOF>1<EOF>
-** -
-** Command list:
-**  LS <args ...>
-**  CD <path>
-**  PWD
-**  MKDIR <name>
+** ---
+** refresh:
+**  c:			REFRESH<EOF>
+**  s:			<EOF>0<EOF><len>\n<curr dir><EOF>0<EOF>
 ** ---
 ** get:
 **  c:			GET <file name><EOF>

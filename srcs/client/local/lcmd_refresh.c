@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argv.c                                             :+:      :+:    :+:   */
+/*   lcmd_refresh.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/26 17:13:37 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:14:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/04 23:30:20 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/04 23:36:48 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
-#include "server_msg.h"
+#include "client.h"
+#include <stdlib.h>
 #include <unistd.h>
 
-t_bool			parse_argv(t_server *serv, int argc, char **argv)
+void			lcmd_refresh(t_client *client, const t_lcmd *cmd, char **args)
 {
-	if (argc <= 1)
-		return (ft_fdprintf(2, ERR_NO_ARG), false);
-	if (!ft_sisint(argv[1]))
-		return (ft_fdprintf(2, ERR_BAD_PORT, argv[1]), false);
-	serv->port = ft_atoi(argv[1]);
-	if (argc > 2 && chdir(argv[2]) != 0)
-		return (ft_fdprintf(2, ERR_BAD_PATH, argv[2]), false);
-	return (true);
+	if (client->lpwd != NULL)
+		free(client->lpwd);
+	client->lpwd = getcwd(NULL, 0);
+	(void)cmd;
+	(void)args;
 }

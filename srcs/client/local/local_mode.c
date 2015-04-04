@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:13:31 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 16:11:47 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/04 23:51:37 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ const t_lcmd	g_lcmds[] = {
 	{"TOUCH", &sys_cmd, "/bin/touch"},
 	{"RM", &sys_cmd, "/bin/rm"},
 	{"MV", &sys_cmd, "/bin/mv"},
+	{"CD", &lcmd_cd, NULL},
+	{"REFRESH", &lcmd_refresh, NULL},
 	{"H", &lcmd_help, NULL},
 	{"HELP", &lcmd_help, NULL},
 	{NULL, NULL, NULL}
@@ -46,9 +48,10 @@ void			local_mode(t_client *client, char **nope)
 	t_sub			line;
 	char			**args;
 
+	lcmd_refresh(client, NULL, NULL);
 	while (true)
 	{
-		ft_printf(LOCAL_PROMPT);
+		ft_printf(LOCAL_PROMPT, client->lpwd);
 		if (get_next_line(0, &line) <= 0)
 			break ;
 		if (line.length <= 0)

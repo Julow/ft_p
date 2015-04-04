@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 19:05:11 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 00:13:18 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 # define USAGE			INFO "Usage: %s <ip> <port>" ENDL
 
-# define REMOTE_PROMPT	C_RESET "remote > "
-# define LOCAL_PROMPT	C_RESET "local > "
+# define REMOTE_PROMPT	C_RESET "%s:%d %s > "
+# define LOCAL_PROMPT	C_RESET "%s > "
 
 # define EXISTS_PROMPT	C_RESET "File already exists. Overwrite ? "
 # define EXS_PMPT_HELP	"(y/n) "
@@ -54,5 +54,11 @@
 # define ERR_RETV_DIR	ERROR "%s: File exists: " ERR_FILE_DIR
 # define ERR_RETV_LOOP	ERROR "%s: " ERR_FILE_LOOP
 # define ERR_RETV_ERR	ERROR "%s: Cannot acces: " ERR_FILE_ERR
+
+# define ERR_CD_HOME	ERROR "Cannot find $HOME variable." ENDL
+# define ERR_CD_NO		ERR_OPN_NO
+# define ERR_CD_RIGHT	ERR_OPN_RIGHT
+# define ERR_CD_LOOP	ERR_OPN_LOOP
+# define ERR_CD_NODIR	ERROR "%s: " ERR_FILE_NODIR
 
 #endif

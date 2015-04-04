@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:18:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 16:11:52 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 00:39:19 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 const t_cmd		g_cmds[] = {
 	{"LS", &serv_cmd},
-	{"CD", &serv_cmd},
+	{"CD", &cmd_cd},
 	{"PWD", &serv_cmd},
 	{"MKDIR", &serv_cmd},
 	{"GET", &cmd_get},
 	{"PUT", &cmd_put},
 	{"L", &local_mode},
+	{"REFRESH", &cmd_refresh},
 	{"H", &cmd_help},
 	{"HELP", &cmd_help},
 	{NULL, NULL}
@@ -46,9 +47,11 @@ void			remote_mode(t_client *client)
 	t_sub			line;
 	char			**args;
 
+	cmd_refresh(client, NULL);
 	while (true)
 	{
-		ft_printf(REMOTE_PROMPT);
+		ft_printf(REMOTE_PROMPT, client->serv_addr, client->serv_port,
+			client->pwd);
 		if (get_next_line(0, &line) <= 0)
 			break ;
 		if (line.length <= 0)

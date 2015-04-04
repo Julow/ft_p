@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 15:16:24 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 00:30:21 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "msg.h"
 
-# define USAGE			INFO "Usage: %s <port>" ENDL
+# define USAGE			INFO "Usage: %s <port> [path]" ENDL
 
 # define INFO_LISTEN	INFO "Server running on port %d" ENDL
 # define INFO_STOPPED	INFO "Server stopped" ENDL
@@ -30,9 +30,13 @@
 
 # define ERR_NO_ARG		ERROR "Please specify an argument" ENDL
 # define ERR_BAD_PORT	ERROR "Not a valid port: %s" ENDL
+# define ERR_BAD_PATH	ERROR "Not a valid path: %s" ENDL
 
-# define ERR_CANT_PORT	ERROR "Cannot listen port %d" ENDL
+# define ERR_CANT_PORT	ERROR "Cannot listen port: %d" ENDL
+# define ERR_CANT_PATH	ERROR "Cannot resolve path." ENDL
 # define ERR_NO_FORK	ERROR "Cannot connect client (Fork failed)" ENDL
+
+# define ERR_CD_ROOT	"Cannot go back the root"
 
 # define RESP_ERROR		"Unexpected error" ENDL
 # define RESP_UNSUPTED	"Unsupported command" ENDL

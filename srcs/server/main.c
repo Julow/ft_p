@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:42:20 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/02 16:52:50 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 00:04:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int				main(int argc, char **argv)
 	ft_bzero(&server, sizeof(t_server));
 	if (!parse_argv(&server, argc, argv))
 		return (ft_fdprintf(2, USAGE, argv[0]), 1);
+	if ((server.root = getcwd(NULL, 0)) == NULL)
+		return (ft_fdprintf(2, ERR_CANT_PATH), 1);
 	if ((server.server = ft_servcreate(server.port)) < 0)
 		return (ft_fdprintf(2, ERR_CANT_PORT, server.port), 1);
 	ft_printf(INFO_LISTEN, server.port);

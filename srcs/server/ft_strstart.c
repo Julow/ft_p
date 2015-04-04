@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argv.c                                             :+:      :+:    :+:   */
+/*   ft_strstart.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/26 17:13:37 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:14:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/05 00:08:33 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/05 00:09:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-#include "server_msg.h"
-#include <unistd.h>
 
-t_bool			parse_argv(t_server *serv, int argc, char **argv)
+char			*ft_strstart(char *str, const char *start)
 {
-	if (argc <= 1)
-		return (ft_fdprintf(2, ERR_NO_ARG), false);
-	if (!ft_sisint(argv[1]))
-		return (ft_fdprintf(2, ERR_BAD_PORT, argv[1]), false);
-	serv->port = ft_atoi(argv[1]);
-	if (argc > 2 && chdir(argv[2]) != 0)
-		return (ft_fdprintf(2, ERR_BAD_PATH, argv[2]), false);
-	return (true);
+	while (*str == *start && *start != '\0')
+	{
+		str++;
+		start++;
+	}
+	if (*start != '\0')
+		return (NULL);
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 19:35:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/04 23:31:01 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct	s_client
 	t_socket		sock;
 	char			*serv_addr;
 	int				serv_port;
+	char			*pwd;
+	char			*lpwd;
 }				t_client;
 
 typedef struct	s_cmd
@@ -59,6 +61,8 @@ t_bool			parse_response(t_client *client, int *status);
 
 void			serv_cmd(t_client *client, char **args);
 
+void			cmd_cd(t_client *client, char **args);
+void			cmd_refresh(t_client *client, char **args);
 void			cmd_help(t_client *client, char **args);
 
 void			cmd_get(t_client *client, char **args);
@@ -72,7 +76,8 @@ void			cmd_put(t_client *client, char **args);
 void			local_mode(t_client *client, char **args);
 
 void			lcmd_help(t_client *client, const t_lcmd *cmd, char **args);
-
+void			lcmd_cd(t_client *client, const t_lcmd *cmd, char **args);
+void			lcmd_refresh(t_client *client, const t_lcmd *cmd, char **args);
 void			sys_cmd(t_client *client, const t_lcmd *cmd, char **args);
 
 /*
