@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 19:07:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/30 19:49:53 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/04 16:32:31 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "server_msg.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/wait.h>
 
 int				system_cmd(t_server *serv, const t_cmd *cmd, char **args)
 {

@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/09 12:51:40 by jaguillo          #+#    #+#              #
-#    Updated: 2015/04/03 20:20:22 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/04/04 16:48:53 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,22 +54,22 @@ O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
 # Default rule
 # Build sub-makefiles and the project
 all:
-	@tput vi
-	@$(foreach lib,$(MAKES),make -C $(lib);)
+	@(tput civis || true)
+	@$(foreach lib,$(MAKES),make -s -C $(lib);)
 	@(make -f server.Makefile -j4 $(NAME) || true)
-	@tput ve
+	@(tput cnorm || true)
 
 # Build the project
 $(NAME): $(O_FILES)
-	@clang $(FLAGS) $(HEADS) $(LINKS) -o $@ $^ && printf "\033[0;32m" || printf "\033[0;31m"
+	@clang $(FLAGS) $(HEADS) -o $@ $^ $(LINKS) && printf "\033[0;32m" || printf "\033[0;31m"
 	@printf "\r%80c\r%s\033[0;0m\n" " " "$@"
 
 # Compile a source file
 $(O_DIR)/%.o: $(C_DIR)/%.c $(H_DIR) $(MAKES)
 	@mkdir -p $(O_DIRS) $(O_DIR) 2> /dev/null || echo "" > /dev/null
 	@clang $(FLAGS) $(HEADS) -o $@ -c $< \
-	&& printf "\r%80c\r\033[0;0m%-34s\033[1;30m -->> \033[0;32m$@\033[0;0m" " " "$<" \
-	|| (printf "\n\033[0;0m%-34s\033[1;30m -->> \033[0;31m$@\033[0;0m\n" " " "$<" \
+	&& printf "%40c\r\033[0;32m%s\033[0;0m\r" " " "$<" \
+	|| (printf "\r%40c\r\033[0;31m%s\033[0;0m\n" " " "$<" \
 		&& exit 1)
 
 # Enable debug mode and build all
