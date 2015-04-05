@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:12:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/27 16:27:19 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 15:47:42 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_bool			parse_argv(t_client *client, int argc, char **argv)
 	i = 1;
 	if (i >= argc)
 		return (ft_fdprintf(2, ERR_NO_ARG), false);
-	client->serv_addr = argv[i++];
+	if (ft_strcase(argv[i], "localhost"))
+		client->serv_addr = "127.0.0.1";
+	else
+		client->serv_addr = argv[i];
+	i++;
 	if (i >= argc)
 		return (ft_fdprintf(2, ERR_NO_ARG), false);
 	if (!ft_sisint(argv[i]))
