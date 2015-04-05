@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:12:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 15:47:42 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 23:46:00 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_bool			parse_argv(t_client *client, int argc, char **argv)
 		return (ft_fdprintf(2, ERR_NO_ARG), false);
 	if (!ft_sisint(argv[i]))
 		return (ft_fdprintf(2, ERR_BAD_PORT, argv[i]), false);
-	client->serv_port = ft_atoi(argv[i++]);
+	client->serv_port = argv[i++];
 	return (true);
 }

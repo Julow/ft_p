@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 15:00:50 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 00:07:45 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define USAGE			INFO "Usage: %s <ip> <port>" ENDL
 
-# define REMOTE_PROMPT	C_RESET "%s:%d %s > "
+# define REMOTE_PROMPT	C_RESET "%s:%s %s > "
 # define LOCAL_PROMPT	C_RESET "%s > "
 
 # define EXISTS_PROMPT	C_RESET "File already exists. Overwrite ? "
@@ -26,7 +26,7 @@
 
 # define RESP_PREFIX	C_GRAY "> "
 
-# define INFO_CONN		INFO "Connecting to %s:%d..." ENDL
+# define INFO_CONN		INFO "Connecting to %s:%s..." ENDL
 # define INFO_CONNTED	INFO "Connected." ENDL
 # define INFO_CLOSED	INFO "Connexion closed." ENDL
 
@@ -41,7 +41,7 @@
 # define ERR_NO_ARG		ERROR "Not enougth argument." ENDL
 # define ERR_BAD_PORT	ERROR "Not a valid port: %s" ENDL
 
-# define ERR_CANT_CON	ERROR "Cannot connect to %s:%d" ENDL
+# define ERR_CANT_CON	ERROR "Cannot connect to %s:%s" ENDL
 
 # define ERR_BAD_CMD	ERROR "Unknown command: %s" ENDL
 

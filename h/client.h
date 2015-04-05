@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:56 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/04 23:31:01 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 23:46:08 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct	s_client
 {
 	t_socket		sock;
 	char			*serv_addr;
-	int				serv_port;
+	char			*serv_port;
 	char			*pwd;
 	char			*lpwd;
 }				t_client;
@@ -83,7 +83,7 @@ void			sys_cmd(t_client *client, const t_lcmd *cmd, char **args);
 /*
 ** ft
 */
-int				ft_clientcreate(const char *addr, int port);
+int				ft_clientcreate(const char *addr, const char *port);
 void			ft_writefile(t_out *dst, int fd);
 
 #endif

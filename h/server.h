@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:36 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 15:18:02 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 23:55:48 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct	s_server
 {
 	int				server;
-	int				port;
+	char			*port;
 	t_socket		sock;
 	char			*root;
 }				t_server;
@@ -32,7 +32,7 @@ typedef struct	s_cmd
 	char			*path;
 }				t_cmd;
 
-int				ft_servcreate(int port);
+int				ft_servcreate(const char *port);
 void			ft_writefile(t_out *dst, int fd);
 
 char			*ft_strstart(char *str, const char *start);
