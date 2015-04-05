@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/02 15:00:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/03 20:16:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 15:22:57 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,7 @@ static int		get_fd(t_server *serv, const char *file)
 		if ((fd = ask_overwrite(serv, file)) != -1)
 			return (fd);
 	}
-	if (errno == EACCES)
-		ft_writestr(SOUT(serv), ERR_FILE_RIGHT);
-	else if (errno == EISDIR)
-		ft_writestr(SOUT(serv), ERR_FILE_DIR);
-	else if (errno == ELOOP)
-		ft_writestr(SOUT(serv), ERR_FILE_LOOP);
-	else
-		ft_writestr(SOUT(serv), ERR_FILE_ERR);
+	write_errno(serv);
 	return (-1);
 }
 

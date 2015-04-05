@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 19:01:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/04 23:45:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 15:06:39 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 const t_cmd		g_cmds[] = {
 	{"ls", &system_cmd, "/bin/ls"},
 	{"refresh", &cmd_refresh, NULL},
+	{"pwd", &cmd_pwd, NULL},
 	{"cd", &cmd_cd, NULL},
 	{"get", &cmd_get, NULL},
 	{"put", &cmd_put, NULL},
