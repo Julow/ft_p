@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 14:57:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 20:30:16 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define USAGE			INFO "Usage: %s <port> [path]" ENDL
 
+# define INFO_ROOT		INFO "Server root: %s" ENDL
 # define INFO_LISTEN	INFO "Server running on port %d" ENDL
 # define INFO_STOPPED	INFO "Server stopped" ENDL
 
