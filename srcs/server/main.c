@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:42:20 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:04:02 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 14:54:47 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void		wait_clients(t_server *serv)
 
 	while ((cs = accept(serv->server, NULL, 0)) >= 0)
 	{
+		if ((serv->root = getcwd(NULL, 0)) == NULL)
+			return (ft_fdprintf(2, ERR_CANT_PATH), VOID);
 		if ((pid = fork()) < 0)
 			ft_fdprintf(2, ERR_NO_FORK);
 		else if (pid == 0)

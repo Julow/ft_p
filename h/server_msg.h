@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:30:21 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 14:57:14 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@
 # define ERR_BAD_PATH	ERROR "Not a valid path: %s" ENDL
 
 # define ERR_CANT_PORT	ERROR "Cannot listen port: %d" ENDL
-# define ERR_CANT_PATH	ERROR "Cannot resolve path." ENDL
+# define ERR_CANT_PATH	ERROR "Cannot find root directory." ENDL
 # define ERR_NO_FORK	ERROR "Cannot connect client (Fork failed)" ENDL
+# define ERR_ABORTED	ERROR RESP_ABORT
 
-# define ERR_CD_ROOT	"Cannot go back the root"
+# define ERR_CD_ROOT	"Cannot go before the root."
 
+# define RESP_ABORT		"Connexion aborted" ENDL
 # define RESP_ERROR		"Unexpected error" ENDL
 # define RESP_UNSUPTED	"Unsupported command" ENDL
 # define RESP_NEEDARG	"Please specify an argument" ENDL

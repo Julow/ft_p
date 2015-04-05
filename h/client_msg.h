@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:13:18 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 15:00:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define INFO_CONN		INFO "Connecting to %s:%d..." ENDL
 # define INFO_CONNTED	INFO "Connected." ENDL
+# define INFO_CLOSED	INFO "Connexion closed." ENDL
 
 # define INFO_REQUEST	REQUEST "%s" ENDL
 

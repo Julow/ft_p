@@ -6,14 +6,28 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/04 23:41:35 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:31:04 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 14:57:18 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 #include "server_msg.h"
 #include <unistd.h>
+#include <stdlib.h>
 #include <errno.h>
+
+static void		cd_root(t_server *serv)
+{
+	if (chdir(serv->root) != 0)
+	{
+		ft_writestr(SOUT(serv), RESP_ERROR);
+		ft_writestr(SOUT(serv), RESP_ABORT);
+		write_eor(serv, 255);
+		ft_fdprintf(2, ERR_CANT_PATH);
+		ft_fdprintf(2, ERR_ABORTED);
+		exit(255);
+	}
+}
 
 int				cmd_cd(t_server *serv, const t_cmd *cmd, char **args)
 {
@@ -35,9 +49,9 @@ int				cmd_cd(t_server *serv, const t_cmd *cmd, char **args)
 		return (1);
 	}
 	if ((dir = getcwd(NULL, 0)) == NULL)
-		return (chdir(serv->root), ft_writestr(SOUT(serv), ERR_FILE_ERR), 2);
+		return (cd_root(serv), ft_writestr(SOUT(serv), ERR_FILE_ERR), 2);
 	if ((dir = ft_strstart(dir, serv->root)) == NULL)
-		return (chdir(serv->root), ft_writestr(SOUT(serv), ERR_CD_ROOT), 1);
+		return (cd_root(serv), ft_writestr(SOUT(serv), ERR_CD_ROOT), 1);
 	ft_writef(SOUT(serv), "Path: %s", dir);
 	(void)cmd;
 	return (0);
