@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/04 23:41:35 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 15:23:28 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 19:57:52 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int				cmd_cd(t_server *serv, const t_cmd *cmd, char **args)
 	if (*pwd == '\0')
 		pwd = "/";
 	ft_writef(SOUT(serv), "Path: %s", pwd);
+	write_eor(serv, 0);
+	ft_writef(SOUT(serv), "%d\n%s", ft_strlen(pwd), pwd);
 	free(dir);
 	return (0);
 	(void)cmd;

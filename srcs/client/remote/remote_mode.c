@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:18:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 15:00:53 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/05 19:46:45 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void			remote_mode(t_client *client)
 		ft_strupper(args[0]);
 		if (ft_strequ(args[0], "QUIT") || ft_strequ(args[0], "Q"))
 			return (ft_splitfree(args));
+		ft_buffclear(SIN(client));
 		exec_cmd(client, args);
 		ft_splitfree(args);
 	}
