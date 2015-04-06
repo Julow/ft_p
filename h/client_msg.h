@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:39 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/06 00:07:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 18:32:09 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@
 
 # define ERR_BAD_CMD	ERROR "Unknown command: %s" ENDL
 
-# define ERR_OPN_NO		ERROR "%s: " ERR_FILE_NO
-# define ERR_OPN_RIGHT	ERROR "%s: " ERR_FILE_RIGHT
-# define ERR_OPN_DIR	ERROR "%s: " ERR_FILE_DIR
-# define ERR_OPN_LOOP	ERROR "%s: " ERR_FILE_LOOP
-# define ERR_OPN_ERR	ERROR "%s: " ERR_FILE_ERR
+# define ERR_OPN_EXIST		ERROR ERR_F_EXIST
+# define ERR_OPN_NO			ERROR ERR_F_NO
+# define ERR_OPN_RIGHT		ERROR ERR_F_RIGHT
+# define ERR_OPN_DIR		ERROR ERR_F_DIR
+# define ERR_OPN_NODIR		ERROR ERR_F_NODIR
+# define ERR_OPN_LOOP		ERROR ERR_F_LOOP
+# define ERR_OPN_ERR		ERROR ERR_F_ERR
 
 # define ERR_RETV_RIGHT	ERROR "%s: File exists: " ERR_FILE_RIGHT
 # define ERR_RETV_DIR	ERROR "%s: File exists: " ERR_FILE_DIR

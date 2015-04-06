@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 19:14:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 23:46:23 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 18:15:38 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define ERR_ABORTED	ERROR RESP_ABORT
 
 # define ERR_CD_ROOT	"Cannot go before the root."
+
+# define ERR_MKD_ABS	"Cannot create a dir with an absolute path"
 
 # define RESP_ABORT		"Connexion aborted" ENDL
 # define RESP_ERROR		"Unexpected error" ENDL

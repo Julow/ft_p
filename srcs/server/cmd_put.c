@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/02 15:00:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 15:22:57 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 17:50:53 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int				cmd_put(t_server *serv, const t_cmd *cmd, char **args)
 	if ((fd = get_fd(serv, args[1])) < 0)
 		return (1);
 	write_eor(serv, 0);
-	ft_printf("WAIT FOR FILE\n");
 	if (!ft_parseint(SIN(serv), &size) || !BIS(SIN(serv), EOF))
 		return (ft_fdprintf(2, RESP_ERROR), close(fd), 1);
 	out = OUT(fd, buff, BUFF_SIZE);

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/02 15:01:03 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 20:41:31 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 17:51:11 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void			cmd_put(t_client *client, char **args)
 		return ;
 	if (status != 0)
 		return (ft_fdprintf(2, ERR_CMD, args[0], status), VOID);
-	ft_printf("GIVE FILE\n");
 	ft_writef(SOUT(client), "%d%c", file.size, EOF);
 	ft_flush(SOUT(client));
 	ft_writefile(SOUT(client), file.fd);

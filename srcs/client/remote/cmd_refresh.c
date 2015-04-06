@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/04 23:17:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 00:17:31 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 17:49:47 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_bool	parse_pwd(t_client *client)
 		return (false);
 	path = MAL(char, len + 1);
 	if (!ft_parsen(SIN(client), path, len))
-		return (free(path), false);;
+		return (free(path), false);
 	path[len] = '\0';
 	if (client->pwd != NULL)
 		free(client->pwd);

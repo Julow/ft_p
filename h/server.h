@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/26 15:39:36 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 23:55:48 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/06 18:08:56 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void			write_errno(t_server *serv);
 
 int				exec_cmd(t_server *serv, const char *cmd);
 
+int				cmd_mkdir(t_server *serv, const t_cmd *cmd, char **args);
 int				cmd_pwd(t_server *serv, const t_cmd *cmd, char **args);
 int				cmd_refresh(t_server *serv, const t_cmd *cmd, char **args);
 int				cmd_cd(t_server *serv, const t_cmd *cmd, char **args);
