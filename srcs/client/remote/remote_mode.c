@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:18:14 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 19:46:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/05/05 16:58:03 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ void			remote_mode(t_client *client)
 			client->pwd);
 		if (get_next_line(0, &line) <= 0)
 			return (NL, VOID);
-		if (line.length <= 0)
+		if ((args = ft_strsplit(line.str, ' ')) == NULL || args[0] == NULL)
+		{
+			if (args[0] == NULL)
+				ft_splitfree(args);
 			continue ;
-		if ((args = ft_strsplit(line.str, ' ')) == NULL)
-			continue ;
+		}
 		ft_strupper(args[0]);
 		if (ft_strequ(args[0], "QUIT") || ft_strequ(args[0], "Q"))
 			return (ft_splitfree(args));

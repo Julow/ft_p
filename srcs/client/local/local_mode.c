@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 12:13:31 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/04 23:51:37 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/05/05 16:58:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ void			local_mode(t_client *client, char **nope)
 		ft_printf(LOCAL_PROMPT, client->lpwd);
 		if (get_next_line(0, &line) <= 0)
 			break ;
-		if (line.length <= 0)
+		if ((args = ft_strsplit(line.str, ' ')) == NULL || args[0] == NULL)
+		{
+			if (args[0] == NULL)
+				ft_splitfree(args);
 			continue ;
-		if ((args = ft_strsplit(line.str, ' ')) == NULL)
-			continue ;
+		}
 		ft_strupper(args[0]);
 		if (ft_strequ(args[0], "QUIT") || ft_strequ(args[0], "Q"))
 			return (ft_splitfree(args));

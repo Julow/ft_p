@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/27 18:08:17 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/05 20:28:35 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/05/05 17:04:53 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 /*
 ** ========================================================================== **
 ** ft_p
+** -
+** IPv6
+** local mode
+** prompt with pwd
+** colors + details
+** local: ls, pwd, mkdir, rmdir, touch, rm, mv, cd
+** remote: ls, cd, pwd, mkdir, get, put, l
+** server take root as param
+** cannot cd, get, put before root
 */
 
 typedef struct	s_socket
